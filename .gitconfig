@@ -1,0 +1,14 @@
+[core]
+	excludesfile = ~/.gitignore
+[color]
+	ui = auto
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+[user]
+	name = Ervin Weber
+	email = webervin@gmail.com
+[push]
+	default = current
