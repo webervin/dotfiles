@@ -1,11 +1,19 @@
 #!/usr/bin/env ruby
 
-list =   `git ls-files`
+require 'English'
 
-list.
+puts <<TXT
+(Legend: \033[32madded in repository\033[0m,\033[31m home additions\033[0m)
+TXT
+
+own_exit = 0
+`git ls-files`.
   split("\n").
   select { |i| i !~ /\Ascript\// }.
   each do |file|
-  puts `git diff --color-words ~/#{file} #{file}`
-end
+    diff =  `git diff --color-words ~/#{file} #{file}`
+    puts diff unless diff.empty?
+    own_exit = $CHILD_STATUS.exitstatus unless $CHILD_STATUS.exitstatus.zero?
+  end
 
+exit(own_exit)
