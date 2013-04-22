@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+list =   `git ls-files`
+
+list.
+  split("\n").
+  select { |i| i !~ /\Ascript\// }.
+  each do |file|
+  puts `git diff --color-words ~/#{file} #{file}`
+end
+
