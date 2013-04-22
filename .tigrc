@@ -1,2 +1,8 @@
 set vertical-split = yes
 set author-width = 10
+set line-graphics = "utf-8"
+set tab-size = 2
+set horizontal-scroll = 33%
+set show-rev-graph = yes
+set show-line-numbers = yes      # Show line numbers?
+set line-number-interval = 5

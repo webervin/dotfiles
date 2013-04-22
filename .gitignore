@@ -4,3 +4,8 @@ bin/
 binstubs/
 .idea/
 *.iml
+Gemfile
+Gemfile.lock
+.bundle/
+scratch.txt
+.rbenv-version
