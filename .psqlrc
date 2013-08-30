@@ -6,6 +6,10 @@
 \set HISTCONTROL ignoredups
 \setenv LESS '-iMSx4 FX'
 \setenv PAGER 'less -S -F'
+\set running 'select usename, query, clock_timestamp() - state_change from pg_stat_activity order by 3 desc;'
+\set waits 'SELECT pg_stat_activity.pid, pg_stat_activity.query, pg_stat_activity.waiting, clock_timestamp() - pg_stat_activity.query_start as totaltime, pg_stat_activity.backend_start FROM pg_stat_activity WHERE pg_stat_activity.query !~ \'%IDLE%\'::text AND pg_stat_activity.waiting = true;'  
+\set locks 'select pg_stat_activity.pid,mode,query from pg_locks,pg_stat_activity where granted=false and locktype=\'transactionid\' and pg_stat_activity.pid=pg_locks.pid order by pid,granted;'
+\set statements 'select (select usename from pg_user where usesysid = pgs.userid) as usename, query, calls,total_time, total_time / calls as avg_time from pg_stat_statements pgs'
 \pset pager on
 \timing
 \pset format wrapped
