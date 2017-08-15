@@ -21,7 +21,7 @@ export LC_ALL=en_US.UTF-8
 
 # Brew:
 export PATH="$HOME/tools/brew/bin:$PATH"
-
+export HOMEBREW_NO_ANALYTICS=1
 HEREDOC
 
 source "$HOME/.profile"
@@ -31,6 +31,7 @@ if [ ! -d "$HOME/tools/brew" ]; then
   git clone https://github.com/Homebrew/homebrew "$HOME/tools/brew"
 fi
 
+brew analytics off
 brew update
 
 echo "All done"
