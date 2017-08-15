@@ -22,6 +22,8 @@ export LC_ALL=en_US.UTF-8
 # Brew:
 export PATH="$HOME/tools/brew/bin:$PATH"
 export HOMEBREW_NO_ANALYTICS=1
+# Brew GNU utilities:
+export PATH="$HOME/tools/brew/opt/coreutils/libexec/gnubin:$PATH"
 HEREDOC
 
 source "$HOME/.profile"
@@ -33,6 +35,14 @@ fi
 
 brew analytics off
 brew update
+
+# Install GNU core utilities (those that come with macOS are outdated).
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+brew install coreutils
+
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+brew install findutils
+
 brew install bash bash-git-prompt
 
 echo "All done"
