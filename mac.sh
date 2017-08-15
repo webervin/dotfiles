@@ -33,5 +33,6 @@ fi
 
 brew analytics off
 brew update
+brew install bash bash-git-prompt
 
 echo "All done"
