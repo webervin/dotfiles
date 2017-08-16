@@ -48,6 +48,7 @@ brew install findutils
 brew install bash bash-git-prompt
 
 # app store stuff:
+brew install mas
 cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 715768417 Microsoft Remote Desktop
 638161122 YubiKey Personalization Tool
