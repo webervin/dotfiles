@@ -45,4 +45,19 @@ brew install findutils
 
 brew install bash bash-git-prompt
 
+# casks:
+grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose --force '{}'
+caffeine
+coteditor
+dropbox
+iterm2
+keepassx
+pgadmin3
+skype
+slack
+spotify
+spotify-notifications
+sql-tabs
+HERECASK
+
 echo "All done"
