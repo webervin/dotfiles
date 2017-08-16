@@ -57,7 +57,6 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 803453959 Slack
 425424353 The Unarchiver
 1014850245 MONIT
-414030210 LimeChat
 HEREAPP
 mas upgrade
 
