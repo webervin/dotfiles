@@ -52,7 +52,7 @@ brew install mas
 cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 715768417 Microsoft Remote Desktop
 638161122 YubiKey Personalization Tool
-1024640650 CotEditor (3.2.0)
+1024640650 CotEditor
 957734279 Toggl Desktop
 803453959 Slack
 425424353 The Unarchiver
