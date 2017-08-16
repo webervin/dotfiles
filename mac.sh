@@ -47,7 +47,7 @@ brew install findutils
 
 brew install bash bash-git-prompt
 
-# app store stuff:
+# app store stuff: https://github.com/mas-cli/mas
 brew install mas
 cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 715768417 Microsoft Remote Desktop
@@ -58,6 +58,7 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 425424353 The Unarchiver
 1014850245 MONIT
 HEREAPP
+mas upgrade
 
 # casks:
 grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose --force '{}'
@@ -72,5 +73,10 @@ spotify
 spotify-notifications
 sql-tabs
 HERECASK
+
+# cask upgrade, until brew cask upgrade not implemented:
+# https://github.com/buo/homebrew-cask-upgrade
+https://github.com/buo/homebrew-cask-upgrade
+brew cu
 
 echo "All done"
