@@ -76,7 +76,6 @@ sql-tabs
 vlc
 firefox
 sequential
-adobe-acrobat-reader
 android-file-transfer
 chromecast
 jetbrains-toolbox
