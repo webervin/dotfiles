@@ -57,6 +57,7 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 803453959 Slack
 425424353 The Unarchiver
 1014850245 MONIT
+443987910 1Password - Password Manager and Secure Wallet
 HEREAPP
 mas upgrade
 
@@ -72,6 +73,12 @@ skype
 spotify
 spotify-notifications
 sql-tabs
+vlc
+firefox
+sequential
+adobe-acrobat-reader
+android-file-transfer
+chromecast
 HERECASK
 
 # cask upgrade, until brew cask upgrade not implemented:
