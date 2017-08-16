@@ -47,16 +47,26 @@ brew install findutils
 
 brew install bash bash-git-prompt
 
+# app store stuff:
+cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
+715768417 Microsoft Remote Desktop
+638161122 YubiKey Personalization Tool
+1024640650 CotEditor (3.2.0)
+957734279 Toggl Desktop
+803453959 Slack
+425424353 The Unarchiver
+1014850245 MONIT
+HEREAPP
+
 # casks:
 grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose --force '{}'
 caffeine
-coteditor
 dropbox
 iterm2
 keepassx
+libreoffice
 pgadmin3
 skype
-slack
 spotify
 spotify-notifications
 sql-tabs
