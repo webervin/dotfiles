@@ -4,7 +4,7 @@ set -o pipefail
 set -o errtrace
 set -o nounset
 set -o errexit
-
+set -x
 save_heredoc_in(){
   local target_file=${1}
 
