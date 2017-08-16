@@ -24,6 +24,8 @@ export PATH="$HOME/tools/brew/bin:$PATH"
 export HOMEBREW_NO_ANALYTICS=1
 # Brew GNU utilities:
 export PATH="$HOME/tools/brew/opt/coreutils/libexec/gnubin:$PATH"
+# Brew casks:
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 HEREDOC
 
 source "$HOME/.profile"
