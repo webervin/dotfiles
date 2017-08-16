@@ -57,7 +57,6 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 803453959 Slack
 425424353 The Unarchiver
 1014850245 MONIT
-443987910 1Password - Password Manager and Secure Wallet
 HEREAPP
 mas upgrade
 
