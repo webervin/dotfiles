@@ -35,8 +35,8 @@ if [ ! -d "$HOME/tools/brew" ]; then
   git clone https://github.com/Homebrew/homebrew "$HOME/tools/brew"
 fi
 
-brew analytics off
 brew update
+brew analytics off
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
