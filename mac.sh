@@ -57,6 +57,7 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 803453959 Slack
 425424353 The Unarchiver
 1014850245 MONIT
+414030210 LimeChat
 HEREAPP
 mas upgrade
 
@@ -78,6 +79,10 @@ sequential
 adobe-acrobat-reader
 android-file-transfer
 chromecast
+jetbrains-toolbox
+disk-inventory-x
+firefox
+google-chrome
 HERECASK
 
 # cask upgrade, until brew cask upgrade not implemented:
