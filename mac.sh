@@ -86,6 +86,7 @@ HERECASK
 
 # cask upgrade, until brew cask upgrade not implemented:
 # https://github.com/buo/homebrew-cask-upgrade
+brew tap buo/cask-upgrade
 brew cu
 
 # ruby:
