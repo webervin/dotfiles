@@ -78,7 +78,6 @@ vlc
 firefox
 sequential
 android-file-transfer
-chromecast
 jetbrains-toolbox
 disk-inventory-x
 firefox
