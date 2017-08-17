@@ -95,7 +95,7 @@ brew cu
 # ruby:
 brew install rbenv
 eval "$(rbenv init -)"
-brew install --HEAD ruby-build || brew upgrade --fetch-HEAD ruby-build
+brew install --HEAD ruby-build || brew upgrade --fetch-HEAD ruby-build || true
 
 plugin_dir="$(rbenv root)/plugins/rbenv-default-gems"
 if [ -d "${plugin_dir}" ]; then
