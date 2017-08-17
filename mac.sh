@@ -26,6 +26,9 @@ export HOMEBREW_NO_ANALYTICS=1
 export PATH="$HOME/tools/brew/opt/coreutils/libexec/gnubin:$PATH"
 # Brew casks:
 export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+
+# ruby
+eval "$(rbenv init -)"
 HEREDOC
 
 source "$HOME/.profile"
@@ -91,8 +94,22 @@ brew cu
 
 # ruby:
 brew install rbenv
-rbenv init
+eval "$(rbenv init -)"
 brew install --HEAD ruby-build
 brew upgrade --fetch-HEAD ruby-build
+
+plugin_dir="$(rbenv root)/plugins/rbenv-default-gems"
+if [ -d "${plugin_dir}" ]; then
+  pushd "${plugin_dir}"
+  git fetch
+  git reset --hard origin/master
+  popd
+else
+  git clone https://github.com/rbenv/rbenv-default-gems.git "${plugin_dir}"
+fi
+echo "bundler" > "$(rbenv root)/default-gems"
+
+LATEST_RUBY="$(curl --silent --fail  'https://www.ruby-lang.org/en/downloads/' | grep -oP '(?<=The current stable version is )\d\.\d\.\d(?=\.)')"
+rbenv install "${LATEST_RUBY}"
 
 echo "All done"
