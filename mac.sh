@@ -88,4 +88,10 @@ HERECASK
 https://github.com/buo/homebrew-cask-upgrade
 brew cu
 
+# ruby:
+brew install rbenv
+rbenv init
+brew install --HEAD ruby-build
+brew upgrade --fetch-HEAD ruby-build
+
 echo "All done"
