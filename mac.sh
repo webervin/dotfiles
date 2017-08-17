@@ -60,6 +60,8 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 HEREAPP
 mas upgrade
 
+# allow previous versions of apps:
+brew tap caskroom/versions
 # casks: '--force will reinstall things if needed'
 grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose '{}'
 caffeine
