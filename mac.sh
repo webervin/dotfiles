@@ -60,8 +60,8 @@ cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
 HEREAPP
 mas upgrade
 
-# casks:
-grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose --force '{}'
+# casks: '--force will reinstall things if needed'
+grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose '{}'
 caffeine
 dropbox
 iterm2
