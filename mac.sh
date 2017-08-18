@@ -142,7 +142,7 @@ git config --global branch.autosetuprebase always
 
 # postgresql:
 brew tap petere/postgresql
-brew install postgresql-9.6
+brew install postgresql@9.6
 brew install --HEAD postgresql-common
 
 echo "All done"
