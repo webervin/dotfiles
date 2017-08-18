@@ -129,6 +129,7 @@ jetbrains-toolbox
 disk-inventory-x
 firefox
 google-chrome
+1password
 HERECASK
 
 # cask upgrade, until brew cask upgrade not implemented:
