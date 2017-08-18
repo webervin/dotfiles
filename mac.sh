@@ -107,7 +107,9 @@ if which ggrep; then
   GREP_CMD='ggrep'
 fi
 LATEST_RUBY="$(curl --silent --fail  'https://www.ruby-lang.org/en/downloads/' | ${GREP_CMD} -oP '(?<=The current stable version is )\d\.\d\.\d(?=\.)')"
-rbenv install "${LATEST_RUBY}"
+if [ ! -d "$(rbenv root)/versions/${LATEST_RUBY}" ]; then
+  rbenv install "${LATEST_RUBY}"
+fi
 
 save_heredoc_in "$HOME/.bundle/config" <<HEREDOC
 ---
