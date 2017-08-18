@@ -38,6 +38,10 @@ fi
 
 # git prompt
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  OLD_GITPROMPT=''
+  PS1=''
+  GIT_PROMPT_OLD_DIR_WAS_GIT=''
+  PROMPT_COMMAND=''
   __GIT_PROMPT_DIR="$(brew --prefix)/opt/bash-git-prompt/share"
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
