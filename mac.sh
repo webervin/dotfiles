@@ -110,7 +110,11 @@ else
 fi
 echo "bundler" > "$(rbenv root)/default-gems"
 
-LATEST_RUBY="$(curl --silent --fail  'https://www.ruby-lang.org/en/downloads/' | grep -oP '(?<=The current stable version is )\d\.\d\.\d(?=\.)')"
+GREP_CMD='grep'
+if which ggrep; then
+  GREP_CMD='ggrep'
+fi
+LATEST_RUBY="$(curl --silent --fail  'https://www.ruby-lang.org/en/downloads/' | ${GREP_CMD} -oP '(?<=The current stable version is )\d\.\d\.\d(?=\.)')"
 rbenv install "${LATEST_RUBY}"
 
 echo "All done"
