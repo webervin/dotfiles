@@ -26,7 +26,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 # dock on left
 defaults write com.apple.dock orientation -string left
-kilall Dock
+killall Dock
 
 save_heredoc_in "$HOME/.aliases" <<'HEREDOC'
 alias brewup='time (brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor)'
