@@ -15,9 +15,20 @@ save_heredoc_in(){
 
 (xcode-select --install &&  read -p "Press [Enter] key when xcode finished install") || /usr/bin/true
 
+save_heredoc_in "$HOME/.aliases" <<'HEREDOC'
+alias brewup='time (brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor)'
+alias gd='git diff --color-words'
+alias gdc='git diff --cached --color-words'
+alias rawsql='psql -P t -P format=unaligned --no-psqlrc'
+HEREDOC
 save_heredoc_in "$HOME/.profile" <<'HEREDOC'
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# Aliases.
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
 
 # Brew:
 export PATH="$HOME/tools/brew/bin:$PATH"
