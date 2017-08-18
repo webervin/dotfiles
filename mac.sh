@@ -30,6 +30,11 @@ export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 # ruby
 eval "$(rbenv init -)"
 export PATH="vendor/binstubs:$PATH"
+
+# work profile
+if [ -f "$HOME/.work_profile" ]; then
+  source "$HOME/.work_profile"
+fi
 HEREDOC
 
 source "$HOME/.profile"
