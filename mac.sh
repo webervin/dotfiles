@@ -141,8 +141,21 @@ git config --global push.default current
 git config --global branch.autosetuprebase always
 
 # postgresql:
+POSTGRESQL_TARGET_VERSION='9.6'
 brew tap petere/postgresql
-brew install postgresql@9.6
+brew install postgresql-${POSTGRESQL_TARGET_VERSION}
 brew install --HEAD postgresql-common
+if [ ! -d "$(brew --prefix)/var/lib/postgresql/${POSTGRESQL_TARGET_VERSION}/main" ]; then
+  pg_createcluster -e UTF-8 --locale=en_US.UTF-8 ${POSTGRESQL_TARGET_VERSION} main  -- --data-checksums
+fi
 
+save_heredoc_in "$(brew --prefix)/etc/postgresql/${POSTGRESQL_TARGET_VERSION}/main/pg_hba.conf" <<CONF
+local   all             $(whoami)                             peer
+
+# No security for development
+local   all             all                                     trust
+host    all             all             127.0.0.1/32            trust
+host    all             all             ::1/128                 trust
+CONF
+pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main start || pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main restart
 echo "All done"
