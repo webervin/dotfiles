@@ -130,6 +130,7 @@ disk-inventory-x
 firefox
 google-chrome
 1password
+google-backup-and-sync
 HERECASK
 
 # cask upgrade, until brew cask upgrade not implemented:
