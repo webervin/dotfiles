@@ -24,6 +24,11 @@ fi
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
+# screen saver delay is in seconds, must be 1, 2, 5, 10, 20, 30, or 60 minutes
+# or it will reset to 20 minutes next time you open preferences
+defaults -currentHost write com.apple.screensaver idleTime -int 120
+osascript -e 'tell application "System Events" to set delay interval of screen saver preferences to 120'
+
 # dock on left
 defaults write com.apple.dock orientation -string left
 killall Dock
