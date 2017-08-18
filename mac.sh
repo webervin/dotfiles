@@ -199,4 +199,8 @@ host    all             all             127.0.0.1/32            trust
 host    all             all             ::1/128                 trust
 CONF
 pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main start || pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main restart
+
+# Misc tools and utilities:
+brew install ncdu jq textql ack
+
 echo "All done"
