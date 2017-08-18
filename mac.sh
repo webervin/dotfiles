@@ -19,6 +19,7 @@ save_heredoc_in "$HOME/.aliases" <<'HEREDOC'
 alias brewup='time (brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor)'
 alias gd='git diff --color-words'
 alias gdc='git diff --cached --color-words'
+alias gds='git diff --cached --color-words | sort | uniq -c | less -R'
 alias rawsql='psql -P t -P format=unaligned --no-psqlrc'
 HEREDOC
 save_heredoc_in "$HOME/.profile" <<'HEREDOC'
