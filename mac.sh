@@ -50,6 +50,8 @@ brew install findutils
 
 brew install bash bash-git-prompt
 
+brew install grep
+
 # app store stuff: https://github.com/mas-cli/mas
 brew install mas
 cut -d' ' -f1 <<'HEREAPP' | xargs -I '{}' mas install '{}'
