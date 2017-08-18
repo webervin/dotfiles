@@ -76,6 +76,11 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
+# Z
+if [ -f "$(brew --prefix)/etc/profile.d/z.sh" ]; then
+  source "$(brew --prefix)/etc/profile.d/z.sh"
+fi
+
 HEREDOC
 
 source "$HOME/.profile"
@@ -208,6 +213,6 @@ CONF
 pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main start || pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main restart
 
 # Misc tools and utilities:
-brew install ncdu jq textql ack
+brew install ncdu jq textql ack z
 
 echo "All done"
