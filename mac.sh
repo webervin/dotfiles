@@ -121,4 +121,24 @@ save_heredoc_in "$HOME/.gemrc" <<HEREDOC
 gem: --no-doc --verbose
 HEREDOC
 
+# Git
+brew install git tig
+
+save_heredoc_in "$HOME/.gitignore" <<HEREDOC
+.DS_Store
+vendor/bundle
+vendor/binstubs
+.bundle
+.idea
+HEREDOC
+
+git config --global core.excludesfile ~/.gitignore
+git config --global color.ui auto
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global push.default current
+git config --global branch.autosetuprebase always
+
+
 echo "All done"
