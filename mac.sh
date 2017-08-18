@@ -29,6 +29,7 @@ export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 
 # ruby
 eval "$(rbenv init -)"
+export PATH="vendor/binstubs:$PATH"
 HEREDOC
 
 source "$HOME/.profile"
@@ -98,16 +99,7 @@ brew cu
 brew install rbenv
 eval "$(rbenv init -)"
 brew install --HEAD ruby-build || brew upgrade --fetch-HEAD ruby-build || true
-
-plugin_dir="$(rbenv root)/plugins/rbenv-default-gems"
-if [ -d "${plugin_dir}" ]; then
-  pushd "${plugin_dir}"
-  git fetch
-  git reset --hard origin/master
-  popd
-else
-  git clone https://github.com/rbenv/rbenv-default-gems.git "${plugin_dir}"
-fi
+brew install rbenv-default-gems
 echo "bundler" > "$(rbenv root)/default-gems"
 
 GREP_CMD='grep'
@@ -116,5 +108,17 @@ if which ggrep; then
 fi
 LATEST_RUBY="$(curl --silent --fail  'https://www.ruby-lang.org/en/downloads/' | ${GREP_CMD} -oP '(?<=The current stable version is )\d\.\d\.\d(?=\.)')"
 rbenv install "${LATEST_RUBY}"
+
+save_heredoc_in "$HOME/.bundle/config" <<HEREDOC
+---
+BUNDLE_DISABLE_SHARED_GEMS: '1'
+BUNDLE_BIN: vendor/binstubs
+BUNDLE_PATH: vendor/bundle
+BUNDLE_JOBS: '$(expr $(/usr/sbin/sysctl -n hw.ncpu) - 1)'
+HEREDOC
+
+save_heredoc_in "$HOME/.gemrc" <<HEREDOC
+gem: --no-doc --verbose
+HEREDOC
 
 echo "All done"
