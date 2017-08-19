@@ -31,6 +31,8 @@ osascript -e 'tell application "System Events" to set delay interval of screen s
 
 # dock on left
 defaults write com.apple.dock orientation -string left
+# always show dock
+defaults write com.apple.Dock autohide -bool FALSE
 killall Dock
 
 save_heredoc_in "$HOME/.aliases" <<'HEREDOC'
