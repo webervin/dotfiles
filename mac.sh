@@ -80,6 +80,8 @@ fi
 
 # Z
 if [ -f "$(brew --prefix)/etc/profile.d/z.sh" ]; then
+  _Z_NO_RESOLVE_SYMLINKS=''
+  _Z_NO_PROMPT_COMMAND=''
   source "$(brew --prefix)/etc/profile.d/z.sh"
 fi
 
