@@ -171,6 +171,9 @@ gem: --no-doc --verbose
 HEREDOC
 
 # Git
+brew install python --without-sqlite --without-gdbm
+pip2 install --upgrade pip setuptools
+pip2 install git-sweep
 brew install git tig
 
 save_heredoc_in "$HOME/.gitignore" <<HEREDOC
