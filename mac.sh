@@ -166,14 +166,6 @@ fi
 LATEST_RUBY="$(curl --silent --fail  'https://www.ruby-lang.org/en/downloads/' | ${GREP_CMD} -oP '(?<=The current stable version is )\d\.\d\.\d(?=\.)')"
 rbenv install --keep --skip-existing --verbose "${LATEST_RUBY}"
 
-save_heredoc_in "$HOME/.bundle/config" <<HEREDOC
----
-BUNDLE_DISABLE_SHARED_GEMS: '1'
-BUNDLE_BIN: vendor/binstubs
-BUNDLE_PATH: vendor/bundle
-BUNDLE_JOBS: '$(expr $(/usr/sbin/sysctl -n hw.ncpu) - 1)'
-HEREDOC
-
 save_heredoc_in "$HOME/.gemrc" <<HEREDOC
 gem: --no-doc --verbose
 HEREDOC
@@ -221,5 +213,15 @@ brew install ncdu jq textql ack z
 
 # update index for glocate
 gupdatedb --localpaths="$HOME"
+
+pg_96_version_number="$(brew info postgresql@9.6 | grep -F 'postgresql: stable' | grep --only-matching -e '\d\.\d\.\d')"
+save_heredoc_in "$HOME/.bundle/config" <<HEREDOC
+---
+BUNDLE_DISABLE_SHARED_GEMS: '1'
+BUNDLE_BIN: vendor/binstubs
+BUNDLE_PATH: vendor/bundle
+BUNDLE_JOBS: '$(expr $(/usr/sbin/sysctl -n hw.ncpu) - 1)'
+BUNDLE_BUILD__PG: "--with-pg-config=$(brew --prefix)/Cellar/postgresql@9.6/${pg_96_version_number}/bin/pg_config"
+HEREDOC
 
 echo "All done"
