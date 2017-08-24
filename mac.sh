@@ -219,4 +219,7 @@ pg_ctlcluster ${POSTGRESQL_TARGET_VERSION} main start || pg_ctlcluster ${POSTGRE
 # Misc tools and utilities:
 brew install ncdu jq textql ack z
 
+# update index for glocate
+gupdatedb --localpaths="$HOME"
+
 echo "All done"
