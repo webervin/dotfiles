@@ -145,6 +145,7 @@ firefox
 google-chrome
 1password
 google-backup-and-sync
+hex-fiend
 HERECASK
 
 # cask upgrade, until brew cask upgrade not implemented:
