@@ -30,7 +30,9 @@ if [ ! -d "$HOME/tools/brew" ]; then
   mkdir -vp "$HOME/tools"
   git clone https://github.com/Homebrew/homebrew "$HOME/tools/brew"
 fi
-
+pushd  "$HOME/tools/brew" 
+git fetch --unshallow origin
+popd 
 brew update
 brew analytics off
 
