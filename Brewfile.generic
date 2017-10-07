@@ -1,0 +1,27 @@
+# use `brew cu` to update casks after
+cask_args appdir: "$HOME/Applications"
+tap "buo/cask-upgrade"
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "caskroom/cask"
+brew "mas"
+brew "ncdu"
+cask "android-file-transfer"
+cask "caffeine"
+cask "disk-inventory-x"
+cask "dropbox"
+cask "firefox"
+cask "google-backup-and-sync"
+cask "google-chrome"
+cask "hex-fiend"
+cask "libreoffice"
+cask "sequential"
+cask "skype"
+cask "spotify"
+cask "spotify-notifications"
+cask "vlc"
+mas "Add Folder Icons", id: 420629463
+mas "CotEditor", id: 1024640650
+mas "Microsoft Remote Desktop", id: 715768417
+mas "Monit", id: 1014850245
+mas "The Unarchiver", id: 425424353
