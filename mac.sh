@@ -36,7 +36,7 @@ defaults write com.apple.Dock autohide -bool FALSE
 killall Dock
 
 save_heredoc_in "$HOME/.aliases" <<'HEREDOC'
-alias brewup='time (brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor)'
+alias brewup='time (brew update && brew upgrade;  brew cu; mas upgrade;  brew cleanup; brew cask cleanup; brew doctor)'
 alias gd='git diff --color-words'
 alias gdc='git diff --cached --color-words'
 alias gds='git diff --cached --color-words | sort | uniq -c | less -R'
