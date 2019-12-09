@@ -98,7 +98,7 @@ source "$HOME/.profile"
 
 if [ ! -d "$HOME/tools/brew" ]; then
   mkdir -vp "$HOME/tools"
-  git clone https://github.com/Homebrew/homebrew "$HOME/tools/brew"
+  git clone https://github.com/Homebrew/brew  "$HOME/tools/brew"
 fi
 
 brew update
@@ -129,7 +129,7 @@ HEREAPP
 mas upgrade
 
 # allow previous versions of apps:
-brew tap caskroom/versions
+brew tap homebrew/cask-versions
 # casks: '--force will reinstall things if needed'
 grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose '{}'
 caffeine
