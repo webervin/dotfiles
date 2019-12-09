@@ -16,24 +16,31 @@ save_heredoc_in(){
 (xcode-select --install &&  read -p "Press [Enter] key when xcode finished install") || /usr/bin/true
 
 if [ -f danger_mac ];then
-  # Use to update defaults from third party, must review before use:
-  # curl -v https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos | sed -e '/sudo/ s/^#*/# /'> danger_mac
-  source danger_mac
+  echo -n "Want to tune mac internal settings (y/n)? "
+  read answer  
+  if [ "$answer" != "${answer#[Yy]}" ] ;then
+    echo "Will tune mac configs"  
+    # Use to update defaults from third party, must review before use:
+    # curl -v https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos | sed -e '/sudo/ s/^#*/# /'> danger_mac
+    source danger_mac
+
+    # Require password immediately after sleep or screen saver begins
+    defaults write com.apple.screensaver askForPassword -int 1
+    defaults write com.apple.screensaver askForPasswordDelay -int 0
+    # screen saver delay is in seconds, must be 1, 2, 5, 10, 20, 30, or 60 minutes
+    # or it will reset to 20 minutes next time you open preferences
+    defaults -currentHost write com.apple.screensaver idleTime -int 120
+    osascript -e 'tell application "System Events" to set delay interval of screen saver preferences to 120'
+
+    # dock on left
+    defaults write com.apple.dock orientation -string left
+    # always show dock
+    defaults write com.apple.Dock autohide -bool FALSE
+    killall Dock
+  else 
+    echo "Skipped mac config tunings"
+  fi
 fi
-
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-# screen saver delay is in seconds, must be 1, 2, 5, 10, 20, 30, or 60 minutes
-# or it will reset to 20 minutes next time you open preferences
-defaults -currentHost write com.apple.screensaver idleTime -int 120
-osascript -e 'tell application "System Events" to set delay interval of screen saver preferences to 120'
-
-# dock on left
-defaults write com.apple.dock orientation -string left
-# always show dock
-defaults write com.apple.Dock autohide -bool FALSE
-killall Dock
 
 save_heredoc_in "$HOME/.aliases" <<'HEREDOC'
 alias brewup='time (brew update && brew upgrade;  brew cu; mas upgrade;  brew cleanup; brew cask cleanup; brew doctor)'
