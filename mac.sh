@@ -133,7 +133,7 @@ brew tap homebrew/cask-versions
 # casks: '--force will reinstall things if needed'
 grep -v '#' <<'HERECASK' | xargs -I '{}' brew cask install --verbose '{}'
 caffeine
-dropbox
+# dropbox
 iterm2
 keepassx
 libreoffice
@@ -179,9 +179,9 @@ gem: --no-doc --verbose
 HEREDOC
 
 # Git
-brew install python --without-sqlite --without-gdbm
-pip2 install --upgrade pip setuptools
-pip2 install git-sweep
+# brew install python --without-sqlite --without-gdbm
+# pip3 install --user --upgrade pip setuptools
+pip3 install --user git-sweep
 brew install git tig
 
 save_heredoc_in "$HOME/.gitignore" <<HEREDOC
@@ -190,6 +190,7 @@ vendor/bundle
 vendor/binstubs
 .bundle
 .idea
+Brewfile.lock.json
 HEREDOC
 
 git config --global core.excludesfile ~/.gitignore
