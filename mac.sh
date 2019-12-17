@@ -17,9 +17,9 @@ save_heredoc_in(){
 
 if [ -f danger_mac ];then
   echo -n "Want to tune mac internal settings (y/n)? "
-  read answer  
+  read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then
-    echo "Will tune mac configs"  
+    echo "Will tune mac configs"
     # Use to update defaults from third party, must review before use:
     # curl -v https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos | sed -e '/sudo/ s/^#*/# /'> danger_mac
     source danger_mac
@@ -37,7 +37,7 @@ if [ -f danger_mac ];then
     # always show dock
     defaults write com.apple.Dock autohide -bool FALSE
     killall Dock
-  else 
+  else
     echo "Skipped mac config tunings"
   fi
 fi
@@ -226,7 +226,7 @@ brew install ncdu jq textql ack z
 # update index for glocate
 gupdatedb --localpaths="$HOME"
 
-pg_96_version_number="$(brew info postgresql@9.6 | grep -F 'postgresql: stable' | grep --only-matching -e '\d\.\d\.\d')"
+pg_96_version_number="$( brew list --versions postgresql@9.6 | cut -d ' ' -f 2)"
 save_heredoc_in "$HOME/.bundle/config" <<HEREDOC
 ---
 BUNDLE_DISABLE_SHARED_GEMS: '1'
