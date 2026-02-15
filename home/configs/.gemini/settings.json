@@ -1,0 +1,22 @@
+{
+  "hasSeenIdeIntegrationNudge": true,
+  "contextFileName": "AGENTS.md",
+  "telemetry": {
+    "enabled": false
+  },
+  "usageStatisticsEnabled": false,
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "general": {
+    "previewFeatures": true
+  },
+  "ui": {
+    "footer": {
+      "hideSandboxStatus": false
+    },
+    "showMemoryUsage": true
+  }
+}

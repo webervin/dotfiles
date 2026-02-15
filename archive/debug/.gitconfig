@@ -1,0 +1,49 @@
+[gpg]
+   format = ssh
+[gpg "ssh"]
+   program=/Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+   gpgsign = true
+   verbose = true
+[user]
+   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGATjOiJRUNMKXCJK5uYgWxrGKrpGvnjWek2NXe1JizS
+   email = webervin@gmail.com
+   name = Ervin Weber
+[column]
+   ui = auto
+[branch]
+   sort = -committerdate
+[tag]
+   sort = version:refname
+[init]
+   defaultBranch = main
+[diff]
+   algorithm = histogram
+   colorMoved = plain
+   mnemonicPRefix = true
+   renames = true
+[push]
+   default = simple
+   autoSetupRemote = true
+   followTags = true
+[fetch]
+   prune = true
+   pruneTags = true
+   all = true
+[help]
+   autocorrect = prompt
+[rerere]
+   enabled = true
+   autoupdate = true
+[rebase]
+   autoSquash = true
+   autoStash = true
+   updateRefs = true
+[core]
+   fsmonitor = true
+   excludesfile = /Users/ervin/.gitignore
+[merge]
+   conflictsstyle = zdiff3
+[pull]
+   ff = only
+   rebase = true

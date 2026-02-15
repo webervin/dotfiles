@@ -2,7 +2,7 @@
 vendor/bundle
 bin/
 binstubs/
-.idea/
+../.idea/
 *.iml
 Gemfile
 Gemfile.lock

@@ -1,0 +1,3 @@
+cask "jetbrains-toolbox", greedy: true, args: { no_quarantine: true }
+cask "iterm2", greedy: true, args: { no_quarantine: true }
+brew "gemini-cli", greedy: true

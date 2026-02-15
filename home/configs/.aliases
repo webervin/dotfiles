@@ -1,0 +1,34 @@
+# updates, vulnerabilities:
+alias brewup='time (brew update && brew upgrade; brew outdated --greedy --verbose; brew cleanup; brew doctor)'
+alias vuln_image='trivy image --severity HIGH,CRITICAL  --ignore-unfixed --exit-code=255'
+alias vuln_image_all='trivy image --severity HIGH,CRITICAL--exit-code=255'
+alias vuln_yarn='trivy filesystem --scanners vuln --include-dev-deps yarn.lock'
+
+# terraform
+alias tfd='TF_LOG=trace terraform'
+alias tfmt='terraform fmt -recursive'
+alias tfp='terraform validate && (terraform plan -refresh=false -lock=false | tee ~/last_tf_plan.txt)'
+alias tf_1pass='op run --env-file="op.conf" -- terraform'
+
+# git
+alias diff2='diff --ignore-all-space --side-by-side --suppress-common-lines'
+alias gitup='git checkout "$(git remote show origin | grep '\''HEAD branch'\'' | cut -d '\'' '\'' -f)" && git fetch --prune && git pull'
+alias gd='git diff --color-words=.'
+alias gdc='git diff --cached --color-words=.'
+alias gds='git diff --cached --color-words | sort | uniq -c | less -R'
+alias git_redo='[ -n "$(git status --porcelain)" ] && git add -A . && git commit --amend --no-edit && git push --force-with-lease'
+alias local_branches='git for-each-ref --sort=committerdate refs/heads/ --format='\''%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:Reset))'\'''
+alias remote_branches='git for-each-ref --sort=committerdate refs/remotes/ --format='\''%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:Reset))'\'''
+
+# javascript:
+alias node24='export PATH="$(brew --prefix node@24)/bin:$PATH"'
+
+# Postgresql and Cloud SQL:
+alias rawsql='psql -P t -P format=unaligned --no-psqlrc'
+alias run_psql='psql --dbname=postgres -P pager=off -P t --no-align --no-psqlrc --echo-all --set ON_ERROR_STOP=on'
+alias sql_proxy='cloud-sql-proxy --port=7432 --run-connection-test --auto-iam-authn'
+alias psql_to_proxy='psql --port=7432 --host=127.0.0.1 --dbnmame=postgres -U "webervin@gmail.com"'
+
+# misc
+alias gcurl='curl --header "Authorization: Bearer $(gcloud auth print-identity-token)"'
+alias find_broken_links='find . -type l ! -exec test -e {} \; -print'
